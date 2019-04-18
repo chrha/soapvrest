@@ -1,31 +1,32 @@
 #!/usr/bin/env python
 import web
-import xml.etree.ElementTree as ET
+from database import Database
 
-tree = ET.parse('user_data.xml')
-root = tree.getroot()
+db = Database("users.db")
 
 urls = (
     '/users', 'list_users',
-    '/users/(.*)', 'get_user'
+    '/users/(.*)', 'get_user',
+    '/register', 'add_user'
 )
 
 app = web.application(urls, globals())
 
 class list_users:
     def GET(self):
-	output = 'users:[';
-	for child in root:
-                print 'child', child.tag, child.attrib
-                output += str(child.attrib) + ','
-	output += ']';
-        return output
+        return db.read_all()
 
 class get_user:
     def GET(self, user):
-	for child in root:
-		if child.attrib['id'] == user:
-		    return str(child.attrib)
+        return db.read(user - 1)
+
+class add_user:
+    def POST(self):
+        i = web.input(_method='post')
+        if i.name and i.age:
+            db.write('{ id: '+ str(len(db.parsed_file)) + ', name: ' + i.name.decode() + ', age: ' + i.age.decode() + '}')
+            return "we good fam"
+        return web.notfound("Sorry, invalid input.")
 
 if __name__ == "__main__":
     app.run()
