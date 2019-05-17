@@ -1,3 +1,4 @@
+import os
 class Database(object):
 
     """Class containing a database implementation."""

@@ -1,5 +1,5 @@
 import requests
 import json
-r = requests.get('https://jsonplaceholder.typicode.com/todos/1')
-response = json.loads(r.text[:200])
-print(response)
+payload = {'name': 'stan', 'age': 35}
+r = requests.post('http://0.0.0.0:8080/register',data = payload)
+print(r.text[:200])

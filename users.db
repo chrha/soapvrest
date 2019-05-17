@@ -1,4 +1,8 @@
-{ id: 0, name: ilian, age: 33}
+{ id: 0, name: stan, age: 33}
 %
-{ id: 1, name: chris, age: 45}
+{ id: 1, name: stan, age: 35}
+%
+{ id: 2, name: stan, age: 35}
+%
+{ id: 3, name: stan, age: 33}
 %
