@@ -1,5 +1,10 @@
 import requests
 import json
-payload = {'name': 'stan', 'age': 35}
-r = requests.post('http://0.0.0.0:8080/register',data = payload)
-print(r.text[:200])
+import timeit
+
+payload = {'name': 'fahmi', 'age' : 45}
+start = timeit.timeit()
+r = requests.post('http://0.0.0.0:8080/register', data=payload)
+end = timeit.timeit()
+print(r.text[:200] + "\n")
+print(end - start)

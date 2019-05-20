@@ -1,4 +1,9 @@
 import zeep
+import timeit
+
 wsdl = 'http://localhost:5000/soap?wsdl'
 client = zeep.Client(wsdl=wsdl)
-print(client.service.post_user('stan', '33'))
+start = timeit.timeit()
+client.service.get_user(1)
+end= timeit.timeit()
+print(end - start)
