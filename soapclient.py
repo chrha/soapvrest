@@ -1,5 +1,4 @@
 import zeep
-import timeit
 
 wsdl = 'http://localhost:5000/soap?wsdl'
 client = zeep.Client(wsdl=wsdl)
