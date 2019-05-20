@@ -29,7 +29,8 @@ class Service(enterprise.SOAPService):
 
     @enterprise.soap(String, Integer, _returns=String)
     def post_user(self, name, age):
-        db.write('{ id: '+ str(len(db.parsed_file)) + ', name: ' + name.decode() + ', age: ' + str(age) + '}')
+        db.write('{ id: '+str(len(db.parsed_file))+', name: ' \
+            + name.decode() + ', age: ' + str(age) + '}')
         return 'Succ'
 
     @enterprise.soap(String, _returns=String)

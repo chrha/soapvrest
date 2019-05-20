@@ -10,7 +10,8 @@ def get_user(user):
 @app.route("/register", methods=['POST'])
 def register_user():
     data = request.form
-    db.write('{ id: '+ str(len(db.parsed_file)) + ', name: ' + data['name'].decode() + ', age: ' + data['age'].decode() + '}')
+    db.write('{ id: '+ str(len(db.parsed_file)) + ', name: ' \
+        + data['name'].decode()+', age: '+data['age'].decode()+'}')
     return 'Succ'
 
 if __name__ == "__main__":
